@@ -9,21 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var pressed: Int = 0
+    @State private var timeLeft: String = "00:00:00"
+    let df = DateFormatter()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
-            Text("\(pressed)").padding()
-            Button(action: increment) {
-                Text("Add")
+            Text("\(timeLeft)").padding().onReceive(timer) { time in
+                self.df.dateFormat = "hh:mm:ss"
+                self.timeLeft = self.df.string(from: time)
+            }
+            
+            Button(action: startTimer) {
+                Text("Start")
                 .padding(10)
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2))
             }
         }
     }
 
-    func increment() -> Void {
-        self.pressed = self.pressed + 1
+    func startTimer() -> Void {
+        // Make timer start instead of autostarting with `#autconnect()`
     }
 }
 
@@ -32,3 +38,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
