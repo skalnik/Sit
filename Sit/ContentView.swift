@@ -10,16 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     @State var pressed: Int = 0
-    
+
     var body: some View {
         VStack {
             Text("\(pressed)").padding()
-            Button(action: { self.pressed = self.pressed + 1 }) {
+            Button(action: increment) {
                 Text("Add")
-                .padding()
+                .padding(10)
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2))
             }
         }
+    }
+
+    func increment() -> Void {
+        self.pressed = self.pressed + 1
     }
 }
 
