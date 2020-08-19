@@ -25,8 +25,9 @@ struct ContentView: View {
             Button(action: toggleTimer) {
                 if timerRunning {
                     Text("Stop")
+                    .foregroundColor(Color.red)
                     .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2))
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 2))
                 } else {
                     Text("Start")
                     .padding(10)
