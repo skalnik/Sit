@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9456041024EF839C00356A6F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9456040F24EF839C00356A6F /* TimerView.swift */; };
 		94EC3DAA24EA42F1007A3E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */; };
 		94EC3DAC24EA42F1007A3E3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */; };
 		94EC3DAE24EA42F1007A3E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAD24EA42F1007A3E3A /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9456040F24EF839C00356A6F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		94EC3DA624EA42F1007A3E3A /* Sit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */,
 				94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */,
 				94EC3DAD24EA42F1007A3E3A /* ContentView.swift */,
+				9456040F24EF839C00356A6F /* TimerView.swift */,
 				94EC3DAF24EA42F1007A3E3A /* Assets.xcassets */,
 				94EC3DB424EA42F1007A3E3A /* LaunchScreen.storyboard */,
 				94EC3DB724EA42F1007A3E3A /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				94EC3DAA24EA42F1007A3E3A /* AppDelegate.swift in Sources */,
 				94EC3DAC24EA42F1007A3E3A /* SceneDelegate.swift in Sources */,
+				9456041024EF839C00356A6F /* TimerView.swift in Sources */,
 				94EC3DAE24EA42F1007A3E3A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
