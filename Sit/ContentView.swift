@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     private var minuteOptions = [Int](1...90)
-    @State private var sessionMinutes: Int = 0
+    @State private var sessionMinutes: Int = 1
     
     var body: some View {
         NavigationView {
@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
 
                 NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes)) {
-                    Text("Lets see the \(self.sessionMinutes) minute timer")
+                    Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
                 .foregroundColor(Color.white)
