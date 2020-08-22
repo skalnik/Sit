@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
 
                 NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes)) {
-                   Text("Lets see da timer")
+                    Text("Lets see the \(self.sessionMinutes) minute timer")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
                 .foregroundColor(Color.white)
