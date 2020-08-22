@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 VStack {
-                    Text("Session Time").bold()
+                    Text("Session Time").font(.title)
                     Picker("Session Time", selection: $sessionMinutes) {
                         ForEach(minuteOptions, id: \.self) { minutes in
                             Text("\(minutes)")
