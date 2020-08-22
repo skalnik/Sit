@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var max = 90
+    private var minuteOptions = [Int](1...90)
     @State private var sessionMinutes: Int = 0
     
     var body: some View {
@@ -18,8 +18,8 @@ struct ContentView: View {
                 VStack {
                     Text("Session Time").bold()
                     Picker("Session Time", selection: $sessionMinutes) {
-                        ForEach(1..<90) { minutes in
-                            Text("\(minutes)").tag(minutes)
+                        ForEach(minuteOptions, id: \.self) { minutes in
+                            Text("\(minutes)")
                         }
                     }.labelsHidden()
                 }

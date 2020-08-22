@@ -30,7 +30,7 @@ struct TimerView: View {
                     .background(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 2))
                 }
             } else {
-                Text("\(String(format: timeFormat, (sessionMinutes + 1), seconds))").padding()
+                Text("\(String(format: timeFormat, sessionMinutes, seconds))").padding()
                 Button(action: toggleTimer) {
                     Text("Start")
                     .padding(10)
@@ -50,7 +50,7 @@ struct TimerView: View {
             self.seconds = 0
         } else {
             self.timerRunning = true
-            self.minutes = sessionMinutes + 1
+            self.minutes = sessionMinutes
 
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { innerTimer in
                 if self.seconds == 0 {
