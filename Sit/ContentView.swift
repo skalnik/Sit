@@ -19,7 +19,7 @@ struct ContentView: View {
                     Text("Session Time").bold()
                     Picker("Session Time", selection: $sessionMinutes) {
                         ForEach(1..<90) { minutes in
-                            Text("\(minutes)").tag(minutes + 1)
+                            Text("\(minutes)").tag(minutes)
                         }
                     }.labelsHidden()
                 }
