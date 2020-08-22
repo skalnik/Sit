@@ -9,16 +9,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    private var max = 90
+    @State private var sessionMinutes: Int = 0
+    
     var body: some View {
         NavigationView {
-            VStack(spacing: 30) {
-                Text("You'll eventually be able to set the timer here")
-                    .navigationBarTitle("Sit")
+            VStack {
+                VStack {
+                    Text("Session Time").bold()
+                    Picker("Session Time", selection: $sessionMinutes) {
+                        ForEach(1..<90) { minutes in
+                            Text("\(minutes)").tag(minutes + 1)
+                        }
+                    }.labelsHidden()
+                }
 
-                NavigationLink(destination: TimerView()) {
-                   Text("Press here for timer!")
+                NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes)) {
+                   Text("Lets see da timer")
                 }.buttonStyle(PlainButtonStyle())
-            }
+                .padding(10)
+                .foregroundColor(Color.white)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                
+            }.navigationBarTitle("Sit")
         }
     }
 }
