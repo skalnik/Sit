@@ -21,6 +21,7 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text("\(String(format: timeFormat, minutes, seconds))")
+                .font(.largeTitle)
         }.onAppear {
             self.startTimer()
         }.onDisappear {
