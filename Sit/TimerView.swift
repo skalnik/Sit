@@ -23,6 +23,9 @@ struct TimerView: View {
             Text("\(String(format: timeFormat, minutes, seconds))").padding()
         }.onReceive(timer) { timer in
             self.updateTime()
+        }.onAppear {
+            self.minutes = self.sessionMinutes
+            self.timerRunning = true
         }
     }
     
