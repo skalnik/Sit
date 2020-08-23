@@ -11,44 +11,15 @@ import SwiftUI
 struct TimerView: View {
     @EnvironmentObject var sessionTimer: SessionTimer
     
-    @State private var timer: Timer? = nil
-    @State private var timeFormat = "%02d:%02d"
-
-    @State private var minutes: Int = 0
-    @State private var seconds: Int = 0
-    
     var body: some View {
         VStack {
-            Text("\(String(format: timeFormat, minutes, seconds))")
+            Text("\(self.sessionTimer.timeRemaining)")
                 .font(.largeTitle)
         }.onAppear {
-            self.startTimer()
+            self.sessionTimer.startTimer()
         }.onDisappear {
-            self.stopTimer()
+            self.sessionTimer.stopTimer()
         }
-    }
-    
-    private func startTimer() -> Void {
-        self.minutes = sessionTimer.selectedMinutes
-        sessionTimer.isRunning = true
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            if self.seconds == 0 {
-                if self.minutes == 0 {
-                    self.stopTimer()
-                } else {
-                    self.seconds = 59
-                    self.minutes -= 1
-                }
-            } else {
-                self.seconds -= 1
-            }
-        }
-    }
-    
-    private func stopTimer() -> Void {
-        sessionTimer.isRunning = false
-        self.timer?.invalidate()
     }
 }
 
