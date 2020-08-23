@@ -8,5 +8,7 @@
 
 import Foundation
 class SessionTimer: ObservableObject {
+    public let minuteOptions = [Int](1...90)
+
     @Published var isRunning: Bool = false
 }

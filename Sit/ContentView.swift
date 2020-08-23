@@ -11,7 +11,6 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var sessionTimer: SessionTimer
 
-    private var minuteOptions = [Int](1...90)
     @State private var sessionMinutes: Int = 1
     
     var body: some View {
@@ -20,7 +19,7 @@ struct ContentView: View {
                 VStack {
                     Text("Session Time").font(.title)
                     Picker("Session Time", selection: $sessionMinutes) {
-                        ForEach(minuteOptions, id: \.self) { minutes in
+                        ForEach(sessionTimer.minuteOptions, id: \.self) { minutes in
                             Text("\(minutes)")
                         }
                     }.labelsHidden()
