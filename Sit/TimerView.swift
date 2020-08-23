@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct TimerView: View {
+    @EnvironmentObject var sessionTimer: SessionTimer
+
     @State private var timer: Timer? = nil
-    @State private var timerRunning = false
     @State private var timeFormat = "%02d:%02d"
 
     @State private var minutes: Int = 0
@@ -25,18 +26,18 @@ struct TimerView: View {
         }.onAppear {
             self.startTimer()
         }.onDisappear {
-            self.timerRunning = false
-            self.timer?.invalidate()
+            self.stopTimer()
         }
     }
     
     private func startTimer() -> Void {
         self.minutes = self.sessionMinutes
-        self.timerRunning = true
+        sessionTimer.isRunning = true
+
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if self.seconds == 0 {
                 if self.minutes == 0 {
-                    self.timerRunning = false
+                    self.stopTimer()
                 } else {
                     self.seconds = 59
                     self.minutes -= 1
@@ -45,6 +46,11 @@ struct TimerView: View {
                 self.seconds -= 1
             }
         }
+    }
+
+    private func stopTimer() -> Void {
+        sessionTimer.isRunning = false
+        self.timer?.invalidate()
     }
 }
 

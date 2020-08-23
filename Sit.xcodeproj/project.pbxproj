@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9456041024EF839C00356A6F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9456040F24EF839C00356A6F /* TimerView.swift */; };
+		9482CFE524F2384600833A6A /* SessionTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9482CFE424F2384600833A6A /* SessionTimer.swift */; };
 		94EC3DAA24EA42F1007A3E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */; };
 		94EC3DAC24EA42F1007A3E3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */; };
 		94EC3DAE24EA42F1007A3E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAD24EA42F1007A3E3A /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		9456040F24EF839C00356A6F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
+		9482CFE424F2384600833A6A /* SessionTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTimer.swift; sourceTree = "<group>"; };
 		94EC3DA624EA42F1007A3E3A /* Sit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */,
 				94EC3DAD24EA42F1007A3E3A /* ContentView.swift */,
 				9456040F24EF839C00356A6F /* TimerView.swift */,
+				9482CFE424F2384600833A6A /* SessionTimer.swift */,
 				94EC3DAF24EA42F1007A3E3A /* Assets.xcassets */,
 				94EC3DB424EA42F1007A3E3A /* LaunchScreen.storyboard */,
 				94EC3DB724EA42F1007A3E3A /* Info.plist */,
@@ -153,6 +156,7 @@
 				94EC3DAC24EA42F1007A3E3A /* SceneDelegate.swift in Sources */,
 				9456041024EF839C00356A6F /* TimerView.swift in Sources */,
 				94EC3DAE24EA42F1007A3E3A /* ContentView.swift in Sources */,
+				9482CFE524F2384600833A6A /* SessionTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var sessionTimer: SessionTimer
+
     private var minuteOptions = [Int](1...90)
     @State private var sessionMinutes: Int = 1
     
@@ -24,7 +26,7 @@ struct ContentView: View {
                     }.labelsHidden()
                 }
 
-                NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes)) {
+                NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes), isActive: $sessionTimer.isRunning) {
                     Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
