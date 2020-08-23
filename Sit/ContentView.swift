@@ -10,22 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sessionTimer: SessionTimer
-
-    @State private var sessionMinutes: Int = 1
     
     var body: some View {
         NavigationView {
             VStack {
                 VStack {
                     Text("Session Time").font(.title)
-                    Picker("Session Time", selection: $sessionMinutes) {
+                    Picker("Session Time", selection: $sessionTimer.selectedMinutes) {
                         ForEach(sessionTimer.minuteOptions, id: \.self) { minutes in
                             Text("\(minutes)")
                         }
                     }.labelsHidden()
                 }
 
-                NavigationLink(destination: TimerView(sessionMinutes: $sessionMinutes), isActive: $sessionTimer.isRunning) {
+                NavigationLink(destination: TimerView(), isActive: $sessionTimer.isRunning) {
                     Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)

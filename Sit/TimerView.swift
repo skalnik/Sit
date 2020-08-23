@@ -17,8 +17,6 @@ struct TimerView: View {
     @State private var minutes: Int = 0
     @State private var seconds: Int = 0
     
-    @Binding var sessionMinutes: Int
-    
     var body: some View {
         VStack {
             Text("\(String(format: timeFormat, minutes, seconds))")
@@ -31,7 +29,7 @@ struct TimerView: View {
     }
     
     private func startTimer() -> Void {
-        self.minutes = self.sessionMinutes
+        self.minutes = sessionTimer.selectedMinutes
         sessionTimer.isRunning = true
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
@@ -56,6 +54,6 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(sessionMinutes: .constant(10)).environmentObject(SessionTimer())
+        TimerView().environmentObject(SessionTimer())
     }
 }
