@@ -11,5 +11,5 @@ class SessionTimer: ObservableObject {
     public let minuteOptions = [Int](1...90)
 
     @Published public var isRunning: Bool = false
-    @Published public var selectedMinutes: Int = 1
+    @Published public var selectedMinutes: Int = 10
 }
