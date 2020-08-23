@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TimerView: View {
     @EnvironmentObject var sessionTimer: SessionTimer
-
+    
     @State private var timer: Timer? = nil
     @State private var timeFormat = "%02d:%02d"
 
@@ -33,7 +33,7 @@ struct TimerView: View {
     private func startTimer() -> Void {
         self.minutes = self.sessionMinutes
         sessionTimer.isRunning = true
-
+        
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if self.seconds == 0 {
                 if self.minutes == 0 {
@@ -47,7 +47,7 @@ struct TimerView: View {
             }
         }
     }
-
+    
     private func stopTimer() -> Void {
         sessionTimer.isRunning = false
         self.timer?.invalidate()
@@ -56,6 +56,6 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(sessionMinutes: .constant(10))
+        TimerView(sessionMinutes: .constant(10)).environmentObject(SessionTimer())
     }
 }
