@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import AVFoundation
+
 class SessionTimer: ObservableObject {
     public let minuteOptions = [Int](1...90)
 
@@ -17,13 +19,21 @@ class SessionTimer: ObservableObject {
     
     private var seconds: Int = 0
     private var minutes: Int = 0
+    private let chimeURL = URL(fileURLWithPath: Bundle.main.path(forResource: "chime.mp3", ofType: nil)!)
+    private var chime: AVAudioPlayer?
     
     func startTimer() {
-        isRunning = true
         minutes = selectedMinutes
         seconds = 0
-        updateTimeRemaining()
+        isRunning = true
         
+        do {
+            chime = try AVAudioPlayer(contentsOf: chimeURL)
+        } catch {
+            print("Couldn't load sound file")
+        }
+        
+        updateTimer()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.updateTimer()
         }
@@ -39,6 +49,7 @@ class SessionTimer: ObservableObject {
         
         if seconds == 0 {
             if minutes == 0 {
+                chime?.play()
                 stopTimer()
             } else {
                 seconds = 59
