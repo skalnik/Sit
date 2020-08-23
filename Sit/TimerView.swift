@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State private var timer: Timer? = nil
-
-    @State private var timerRunning: Bool = false
-    @State private var timeFormat: String = "%02d:%02d"
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timerRunning = false
+    @State private var timeFormat = "%02d:%02d"
 
     @State private var minutes: Int = 0
     @State private var seconds: Int = 0
@@ -21,51 +20,23 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            if timerRunning {
-                Text("\(String(format: timeFormat, minutes, seconds))").padding()
-                Button(action: toggleTimer) {
-                    Text("Stop")
-                    .foregroundColor(Color.red)
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 2))
-                }
-            } else {
-                Text("\(String(format: timeFormat, sessionMinutes, seconds))").padding()
-                Button(action: toggleTimer) {
-                    Text("Start")
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2))
-                }
-                
-            }
+            Text("\(String(format: timeFormat, minutes, seconds))").padding()
+        }.onReceive(timer) { timer in
+            self.updateTime()
         }
     }
     
-    func toggleTimer() -> Void {
-        if self.timerRunning {
-            self.timer?.invalidate()
-            self.timerRunning = false
-            self.timer = nil
-            self.minutes = 10
-            self.seconds = 0
-        } else {
-            self.timerRunning = true
-            self.minutes = sessionMinutes
-
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { innerTimer in
-                if self.seconds == 0 {
-                    if self.minutes == 0 {
-                        innerTimer.invalidate()
-                        self.timerRunning = false
-                        self.timer = nil
-                    } else {
-                        self.seconds = 59
-                        self.minutes -= 1
-                    }
-                } else {
-                    self.seconds -= 1
-                }
+    func updateTime() -> Void {
+        if self.seconds == 0 {
+            if self.minutes == 0 {
+                self.minutes = sessionMinutes
+                self.timerRunning = false
+            } else {
+                self.seconds = 59
+                self.minutes -= 1
             }
+        } else {
+            self.seconds -= 1
         }
     }
 }
