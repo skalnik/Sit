@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9456041024EF839C00356A6F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9456040F24EF839C00356A6F /* TimerView.swift */; };
 		9482CFE524F2384600833A6A /* SessionTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9482CFE424F2384600833A6A /* SessionTimer.swift */; };
+		9482CFEA24F3116B00833A6A /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9482CFE924F3116B00833A6A /* chime.mp3 */; };
 		94EC3DAA24EA42F1007A3E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */; };
 		94EC3DAC24EA42F1007A3E3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */; };
 		94EC3DAE24EA42F1007A3E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC3DAD24EA42F1007A3E3A /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		9456040F24EF839C00356A6F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
 		9482CFE424F2384600833A6A /* SessionTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTimer.swift; sourceTree = "<group>"; };
+		9482CFE924F3116B00833A6A /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		94EC3DA624EA42F1007A3E3A /* Sit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9482CFE624F30E8700833A6A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9482CFE924F3116B00833A6A /* chime.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		94EC3D9D24EA42F1007A3E3A = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		94EC3DA824EA42F1007A3E3A /* Sit */ = {
 			isa = PBXGroup;
 			children = (
+				9482CFE624F30E8700833A6A /* Sounds */,
 				94EC3DA924EA42F1007A3E3A /* AppDelegate.swift */,
 				94EC3DAB24EA42F1007A3E3A /* SceneDelegate.swift */,
 				94EC3DAD24EA42F1007A3E3A /* ContentView.swift */,
@@ -140,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EC3DB624EA42F1007A3E3A /* LaunchScreen.storyboard in Resources */,
+				9482CFEA24F3116B00833A6A /* chime.mp3 in Resources */,
 				94EC3DB324EA42F1007A3E3A /* Preview Assets.xcassets in Resources */,
 				94EC3DB024EA42F1007A3E3A /* Assets.xcassets in Resources */,
 			);
