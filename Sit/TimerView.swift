@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timer: Timer? = nil
     @State private var timerRunning = false
     @State private var timeFormat = "%02d:%02d"
 
@@ -20,26 +20,29 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            Text("\(String(format: timeFormat, minutes, seconds))").padding()
-        }.onReceive(timer) { timer in
-            self.updateTime()
+            Text("\(String(format: timeFormat, minutes, seconds))")
         }.onAppear {
-            self.minutes = self.sessionMinutes
-            self.timerRunning = true
+            self.startTimer()
+        }.onDisappear {
+            self.timerRunning = false
+            self.timer?.invalidate()
         }
     }
     
-    func updateTime() -> Void {
-        if self.seconds == 0 {
-            if self.minutes == 0 {
-                self.minutes = sessionMinutes
-                self.timerRunning = false
+    private func startTimer() -> Void {
+        self.minutes = self.sessionMinutes
+        self.timerRunning = true
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if self.seconds == 0 {
+                if self.minutes == 0 {
+                    self.timerRunning = false
+                } else {
+                    self.seconds = 59
+                    self.minutes -= 1
+                }
             } else {
-                self.seconds = 59
-                self.minutes -= 1
+                self.seconds -= 1
             }
-        } else {
-            self.seconds -= 1
         }
     }
 }
