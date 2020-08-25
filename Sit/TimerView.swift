@@ -13,12 +13,25 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            Text("\(self.sessionTimer.timeRemaining)")
-                .font(.largeTitle)
-        }.onAppear {
-            self.sessionTimer.startTimer()
-        }.onDisappear {
-            self.sessionTimer.stopTimer()
+            VStack {
+                Text("\(sessionTimer.timeRemaining)")
+                    .font(.largeTitle)
+            }.onAppear {
+                self.sessionTimer.startTimer()
+            }.onDisappear {
+                self.sessionTimer.stopTimer()
+            }
+            Button(action: {
+                self.sessionTimer.playPause()
+            }) {
+                if(sessionTimer.isPaused) {
+                    Image(systemName: "play.circle")
+                    .font(.largeTitle)
+                } else {
+                    Image(systemName: "pause.circle.fill")
+                    .font(.largeTitle)
+                }
+            }
         }
     }
 }

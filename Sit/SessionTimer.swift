@@ -12,7 +12,8 @@ import AVFoundation
 class SessionTimer: ObservableObject {
     public let minuteOptions = [Int](1...90)
 
-    @Published var isRunning: Bool = false
+    @Published var isActive: Bool = false
+    @Published var isPaused: Bool = false
     @Published var selectedMinutes: Int = 10
     @Published var timer: Timer? = nil
     @Published var timeRemaining: String = "10:00"
@@ -25,7 +26,7 @@ class SessionTimer: ObservableObject {
     func startTimer() {
         minutes = selectedMinutes
         seconds = 0
-        isRunning = true
+        isActive = true
         
         do {
             chime = try AVAudioPlayer(contentsOf: chimeURL)
@@ -40,23 +41,29 @@ class SessionTimer: ObservableObject {
     }
     
     func stopTimer() {
-        isRunning = false
+        isActive = false
         timer?.invalidate()
     }
     
+    func playPause() -> Void {
+        isPaused.toggle()
+    }
+    
     func updateTimer() {
-        updateTimeRemaining()
-        
-        if seconds == 0 {
-            if minutes == 0 {
-                chime?.play()
-                stopTimer()
+        if(!isPaused) {
+            updateTimeRemaining()
+            
+            if seconds == 0 {
+                if minutes == 0 {
+                    chime?.play()
+                    stopTimer()
+                } else {
+                    seconds = 59
+                    minutes -= 1
+                }
             } else {
-                seconds = 59
-                minutes -= 1
+                seconds -= 1
             }
-        } else {
-            seconds -= 1
         }
     }
     

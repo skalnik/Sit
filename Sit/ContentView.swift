@@ -23,13 +23,13 @@ struct ContentView: View {
                     }.labelsHidden()
                 }
 
-                NavigationLink(destination: TimerView(), isActive: $sessionTimer.isRunning) {
+                NavigationLink(destination: TimerView(), isActive: $sessionTimer.isActive) {
                     Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
                 .foregroundColor(Color.white)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-                
+
             }.navigationBarTitle("Sit")
         }
     }
