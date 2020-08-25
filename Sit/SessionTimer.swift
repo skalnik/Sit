@@ -27,6 +27,7 @@ class SessionTimer: ObservableObject {
         minutes = selectedMinutes
         seconds = 0
         isActive = true
+        isPaused = false
         
         do {
             chime = try AVAudioPlayer(contentsOf: chimeURL)
