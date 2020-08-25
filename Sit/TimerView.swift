@@ -21,15 +21,15 @@ struct TimerView: View {
             }.onDisappear {
                 self.sessionTimer.stopTimer()
             }
-            Button(action: {
-                self.sessionTimer.playPause()
-            }) {
+            Button(action: { self.sessionTimer.playPause() }) {
                 if(sessionTimer.isPaused) {
                     Image(systemName: "play.circle")
                     .font(.largeTitle)
+                    .padding()
                 } else {
                     Image(systemName: "pause.circle.fill")
                     .font(.largeTitle)
+                    .padding()
                 }
             }
         }
