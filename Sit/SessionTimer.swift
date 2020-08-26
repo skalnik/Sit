@@ -17,15 +17,21 @@ class SessionTimer: ObservableObject {
     @Published var selectedMinutes: Int = 10
     @Published var timer: Timer? = nil
     @Published var timeRemaining: String = "10:00"
+    @Published var progress: Int = 0
     
-    private var seconds: Int = 0
-    private var minutes: Int = 0
+    private var secondsRemaining: TimeInterval = 0
     private let chimeURL = URL(fileURLWithPath: Bundle.main.path(forResource: "chime.mp3", ofType: nil)!)
     private var chime: AVAudioPlayer?
+    private var timeFormatter: DateComponentsFormatter {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        
+        return formatter
+    }
     
     func startTimer() {
-        minutes = selectedMinutes
-        seconds = 0
+        secondsRemaining = TimeInterval(selectedMinutes * 60)
         isActive = true
         isPaused = false
         
@@ -54,21 +60,16 @@ class SessionTimer: ObservableObject {
         if(!isPaused) {
             updateTimeRemaining()
             
-            if seconds == 0 {
-                if minutes == 0 {
-                    chime?.play()
-                    stopTimer()
-                } else {
-                    seconds = 59
-                    minutes -= 1
-                }
+            if secondsRemaining == 0 {
+                chime?.play()
+                stopTimer()
             } else {
-                seconds -= 1
+                secondsRemaining -= 1
             }
         }
     }
     
     func updateTimeRemaining() {
-        timeRemaining = String(format: "%02d:%02d", minutes, seconds)
+        timeRemaining = timeFormatter.string(from: secondsRemaining) ?? "???"
     }
 }
