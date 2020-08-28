@@ -18,6 +18,7 @@ struct TimerView: View {
                     .trim(from: CGFloat(sessionTimer.progress), to: 1)
                     .stroke(Color.blue, lineWidth: 40)
                     .rotationEffect(.degrees(-90))
+                    .animation(.interpolatingSpring(stiffness: 1.0, damping: 1.0))
                     .frame(width: 300, height: 300)
                     .padding()
                 Text("\(sessionTimer.timeRemaining)")
