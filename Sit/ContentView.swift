@@ -23,7 +23,7 @@ struct ContentView: View {
                     }.labelsHidden()
                 }
 
-                NavigationLink(destination: TimerView(), isActive: $sessionTimer.isActive) {
+                NavigationLink(destination: TimerView().environmentObject(sessionTimer), isActive: $sessionTimer.isActive) {
                     Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
