@@ -17,7 +17,7 @@ class SessionTimer: ObservableObject {
     @Published var selectedMinutes: Int = 10
     @Published var timer: Timer? = nil
     @Published var timeRemaining: String = "10:00"
-    @Published var progress: Double = 0.0
+    @Published var progress: Double = 0
     
     private var secondsRemaining: TimeInterval = 0
     private let chimeURL = URL(fileURLWithPath: Bundle.main.path(forResource: "chime.mp3", ofType: nil)!)
@@ -71,6 +71,6 @@ class SessionTimer: ObservableObject {
     
     func updateTimeRemaining() {
         timeRemaining = timeFormatter.string(from: secondsRemaining) ?? "???"
-        progress = (1 - secondsRemaining / Double(selectedMinutes * 60)) * 100
+        progress = (1 - secondsRemaining / Double(selectedMinutes * 60))
     }
 }

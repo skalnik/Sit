@@ -14,15 +14,14 @@ struct TimerView: View {
     var body: some View {
         VStack {
             ZStack {
-                Arc(startAngle: .degrees(sessionTimer.progress * (360 / 100)), endAngle: .degrees(360), clockwise: true)
-                    .strokeBorder(Color.blue, lineWidth: 40)
+                Circle()
+                    .trim(from: CGFloat(sessionTimer.progress), to: 1)
+                    .stroke(Color.blue, lineWidth: 40)
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 300, height: 300)
                     .padding()
                 Text("\(sessionTimer.timeRemaining)")
                     .font(.largeTitle)
-            }.onAppear {
-                self.sessionTimer.startTimer()
-            }.onDisappear {
-                self.sessionTimer.stopTimer()
             }
             Button(action: { self.sessionTimer.playPause() }) {
                 if(sessionTimer.isPaused) {
@@ -35,31 +34,11 @@ struct TimerView: View {
                         .padding()
                 }
             }
+        }.onAppear {
+            self.sessionTimer.startTimer()
+        }.onDisappear {
+            self.sessionTimer.stopTimer()
         }
-    }
-}
-
-struct Arc: InsettableShape {
-    var startAngle: Angle
-    var endAngle: Angle
-    var clockwise: Bool
-    var insetAmount: CGFloat = 0
-
-    func path(in rect: CGRect) -> Path {
-        let rotationAdjustment = Angle.degrees(90)
-        let modifiedStart = startAngle - rotationAdjustment
-        let modifiedEnd = endAngle - rotationAdjustment
-
-        var path = Path()
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2 - insetAmount, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
-
-        return path
-    }
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var arc = self
-        arc.insetAmount += amount
-        return arc
     }
 }
 
