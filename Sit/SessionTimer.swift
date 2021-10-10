@@ -10,18 +10,21 @@ import Foundation
 import AVFoundation
 
 class SessionTimer: ObservableObject {
-    public let minuteOptions = [Int](1...90)
+    public let minuteOptions = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 45, 60, 90]
 
     @Published var isActive: Bool = false
     @Published var isPaused: Bool = false
     @Published var selectedMinutes: Int = 10
+    @Published var selectedIntervalMinutes: Int = 5
     @Published var timer: Timer? = nil
     @Published var timeRemaining: String = "10:00"
     @Published var progress: Double = 0
+    @Published var intervalTimer: IntervalTimer = IntervalTimer.init()
     
-    private var secondsRemaining: TimeInterval = 0
     private let chimeURL = URL(fileURLWithPath: Bundle.main.path(forResource: "chime.mp3", ofType: nil)!)
     private var chime: AVAudioPlayer?
+    
+    private var secondsRemaining: TimeInterval = 0
     private var timeFormatter: DateComponentsFormatter {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional

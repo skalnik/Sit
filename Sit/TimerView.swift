@@ -18,7 +18,6 @@ struct TimerView: View {
                     .trim(from: CGFloat(sessionTimer.progress), to: 1)
                     .stroke(Color.blue, lineWidth: 40)
                     .rotationEffect(.degrees(-90))
-                    .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
                     .frame(width: 300, height: 300)
                     .padding()
 

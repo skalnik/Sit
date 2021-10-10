@@ -14,22 +14,21 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                VStack {
-                    Text("Session Time").font(.title)
-                    Picker("Session Time", selection: $sessionTimer.selectedMinutes) {
-                        ForEach(sessionTimer.minuteOptions, id: \.self) { minutes in
-                            Text("\(minutes)")
-                        }
-                    }.labelsHidden()
-                }
+                Text("Session Time").font(.title)
 
+                Picker("Session Time", selection: $sessionTimer.selectedMinutes) {
+                    ForEach(sessionTimer.minuteOptions, id: \.self) { minutes in
+                        Text("\(minutes) Minutes")
+                    }
+                }
+                .pickerStyle(.inline)
+                
                 NavigationLink(destination: TimerView().environmentObject(sessionTimer), isActive: $sessionTimer.isActive) {
                     Text("Start")
                 }.buttonStyle(PlainButtonStyle())
                 .padding(10)
                 .foregroundColor(Color.white)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-
             }.navigationBarTitle("Sit")
         }
     }
