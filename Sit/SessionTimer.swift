@@ -62,6 +62,7 @@ class SessionTimer: ObservableObject {
     func updateTimer() {
         if(!isPaused) {
             updateTimeRemaining()
+            intervalTimer.updateTimer()
             
             if secondsRemaining == 0 {
                 chime?.play()
